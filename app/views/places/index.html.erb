@@ -3,5 +3,11 @@
   <%= link_to "Sign Up or Sign in To Save Your Favorite Places!", login_path %>
   <% end %>
 </div>
-<div class="video"><%= video_tag "TravelLoop_001.mp4", autoplay:true, loop:true%>
+<div class="video">
+  <%= video_tag "TravelLoop_001.mp4", autoplay:true, height: "100%", width: "100%", loop: true%>
+</div>
+<div class="weather">
+  <h3><%= @today %></h3>
+  <h3><%= @description %></h3>
+  <h3><%= @degrees %>&nbsp;Degrees Fahrenheit</h3>
 </div>

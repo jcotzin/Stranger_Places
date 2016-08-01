@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'httparty'
 gem 'algoliasearch-rails'
 gem 'hirb'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

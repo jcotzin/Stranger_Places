@@ -2,26 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .video {
-    position: fixed;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transform: translateX(-50%);
-    margin: 0;
-    // opacity: 0.9;
+  position: fixed;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%);
+  margin: 0;
+  // opacity: 0.9;
 }
-// .login_pg {
-//   position: absolute;
-//   display: inline-block;
-//   // padding: 2em;
-//   padding-top: 1.7em;
-//   width: 78em;
-//   height: 8em;
-//   z-index: 3;
-// }
+.login_pg {
+  position: absolute;
+  display: inline-block;
+  // padding: 2em;
+  padding-top: 1.7em;
+  z-index: 2;
+  border: 2px solid white;
+}
 body {
   margin:0;
+}
+.weather {
+  position: absolute;
+  text-align: center;
+  margin-top: 20%;
+  margin-left: 45%;
 }
