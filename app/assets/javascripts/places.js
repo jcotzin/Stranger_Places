@@ -1,6 +1,6 @@
 //not sure if this goes here. I created this file. Also check if app id and key works. Their values are set in config/initializers/algoriasearch.rb
-var client = algoliasearch(application_id, api_key);
-var index = client.initIndex('Place'); //indexname
+var client = algoliasearch(ApplicationID, Search-Only-API-Key);
+var index = client.initIndex('strangerplaces');
 index.search('something', { hitsPerPage: 10, page: 0 })
   .then(function searchDone(content) {
     console.log(content)
