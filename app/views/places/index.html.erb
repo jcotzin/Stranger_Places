@@ -1,15 +1,8 @@
 <div class="login_pg">
   <% if !current_user %>
-  <%= link_to "Sign Up or Sign in To Save Your Favorite Places!", login_path %>
   <% end %>
 </div>
 <% content_for :title do %>Instant-search<% end %>
-
-<h1>Instant-search example</h1>
-
-<div class="well">
-  A <code>Google-like</code> instant-search results page based on <a href="https://community.algolia.com/instantsearch.js"><code>instantsearch.js</code></a>.
-</div>
 
 <div class="container">
   <div class="row">
@@ -39,7 +32,7 @@
     var search = instantsearch({
       appId: '<%= ENV['ALGOLIASEARCH_APPLICATION_ID'] %>',
       apiKey: '<%= ENV['ALGOLIASEARCH_API_KEY_SEARCH'] %>',
-      indexName: '<%= Strangerplaces.index_name%>',
+      indexName: '<%= Place.index_name%>',
       urlSync: true
     });
 
@@ -66,7 +59,7 @@
     search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#companies',
-        attributeName: 'company',
+        attributeName: 'city',
         limit: 10,
         templates: {
           header: 'Companies'
