@@ -11,6 +11,6 @@ class PlacesController < ApplicationController
   @degrees = (@fahrenheit - 459.67).round
 
   #clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
-  
+
   end
 end
