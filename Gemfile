@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'seed_dump'
 gem 'httparty'
 gem 'algoliasearch-rails'
 gem 'hirb'
