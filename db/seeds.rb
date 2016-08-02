@@ -9,6 +9,3 @@ Place.create!([
   {name: "Mohatta Palace", description: "The Mohatta Palace is the pride of Karachi, and a treasure trove of arts, constructed in 1927.", latitude: 24.8146, longitude: 67.0325, city: "Karachi", state_province: nil, country: "Pakistan"},
   {name: "Turkey Hot Air Balloons", description: "Down in the valley...a hot-air balloon drifts right among the fairy chimneys of Cappadocia.", latitude: 38.6463, longitude: 34.8423, city: "Cappadocia", state_province: nil, country: "Turkey"}
 ])
-User.create!([
-  {name: "Jessica", email: "jcotzin@gmail.com", password_digest: "$2a$10$LZ.Xc4TOBHkjx7z6trZdYOUPMsG6Ddxhr54337irFHZexPbiNQ6JG"}
-])
