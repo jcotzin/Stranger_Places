@@ -17,9 +17,9 @@ class Place < ApplicationRecord
     attributesToIndex ['name', 'city', 'state_province', 'country', 'unordered(description)']
 
     # tags used for filtering
-    tags do
-      [item_type, "author_#{author}", "story_#{story_id}"]
-    end
+    # tags do
+    #   [item_type, "author_#{author}", "story_#{story_id}"]
+    # end
 
     # the `customRanking` setting defines the ranking criteria use to compare two matching records in case their text-relevance is equal. It should reflect your record popularity.
     customRanking ['desc(likes_count)']
