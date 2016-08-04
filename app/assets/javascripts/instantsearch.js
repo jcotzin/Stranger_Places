@@ -130,7 +130,8 @@ function ready() {
 
   $("#hits").hide();
   $("#search-input").click(function(){
-    // on clicking the searhc bar hide video
+    // on clicking the search bar hide-video
+    $("div#container-full").hide();
     $("#hits").show();
   });
 }

@@ -1,0 +1,109 @@
+ $(document).ready(function() {
+    var destination;
+    var leaveDate;
+    var returnDate;
+    $('.flight-checker').on('click', 'a', function(e){
+      e.preventDefault();
+      destination = $(this).parent().find('.airport').html();
+      $(this).html("Selected!");
+    });
+    $('#b').on('click', function() {
+      var origin = $('#origin').val();
+      leaveDate = $('#leave-date').val();
+      returnDate = $('#return-date').val();
+      console.log(returnDate, leaveDate);
+      console.log(origin);
+      get_flight_fares(origin, destination, leaveDate, returnDate);
+    });
+
+  });
+
+  function flightRequest(origin, destination, date) {
+    return {
+      "request": {
+        "slice": [
+          {
+            "origin": origin,
+            "destination": destination,
+            "date": date
+          }
+        ],
+        "passengers": {
+          "adultCount": 1,
+          "infantInLapCount": 0,
+          "infantInSeatCount": 0,
+          "childCount": 0,
+          "seniorCount": 0
+        },
+        "solutions": 5,
+        "refundable": false
+      }
+    }
+  }
+
+  function get_flight_fares(origin, destination, leaveDate, returnDate){
+    console.log("it works");
+    $.ajax({
+      method: "POST",
+      //Set up your request URL and API Key.
+      url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCSI8n4_Jm5nvokRoscrR1LZaCdxnxWjw8",
+      contentType: 'application/json',
+      dataType: 'json',
+
+      data: JSON.stringify(flightRequest(origin, destination, leaveDate)),
+      success: function (data) {
+        console.log(data);
+        // debugger
+        var trips = data.trips.tripOption;
+        var complete_flights = [];
+        for (var i = 0; i < trips.length; i++) {
+          var price = trips[i].saleTotal;
+          var origin_code = trips[i].slice[0].segment[0].leg[0].origin;
+          var departureTime = trips[i].slice[0].segment[0].leg[0].departureTime;
+          departureTime = departureTime + " Time Zone";
+          var segmentArray = data.trips.tripOption[0].slice[0].segment;
+          var segment = segmentArray[segmentArray.length - 1];
+          var arrivalCode = segment.leg[0].destination;
+          var arrivalTime = segment.leg[0].arrivalTime;
+          arrivalTime = arrivalTime + " Time Zone";
+
+          var carriers = trips[i].slice[0].segment[0].flight.carrier;
+          $('#results').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+        }
+        $.ajax({
+          method: "POST",
+          url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCSI8n4_Jm5nvokRoscrR1LZaCdxnxWjw8",
+          contentType: 'application/json',
+          dataType: 'json',
+
+          data: JSON.stringify(flightRequest(destination, origin, returnDate)),
+          success: function(data) {
+            var trips = data.trips.tripOption;
+            for (var i = 0; i < trips.length; i++) {
+              var price = trips[i].saleTotal;
+              var origin_code = trips[i].slice[0].segment[0].leg[0].origin;
+              var departureTime = trips[i].slice[0].segment[0].leg[0].departureTime;
+              departureTime = departureTime + " Time Zone";
+              var segmentArray = data.trips.tripOption[0].slice[0].segment;
+              var segment = segmentArray[segmentArray.length - 1];
+              var arrivalCode = segment.leg[0].destination;
+              var arrivalTime = segment.leg[0].arrivalTime;
+              arrivalTime = arrivalTime + " Time Zone";
+              var carriers = trips[i].slice[0].segment[0].flight.carrier;
+              $('#return').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+            }
+          },
+          error: function(error) {
+            console.log(error);
+          }
+        });
+      },
+
+
+      error: function(error){
+        console.log("error:");
+        console.log(error);
+        //Error Handling for our requestgle QPX Failed.");
+      }
+    });
+  }

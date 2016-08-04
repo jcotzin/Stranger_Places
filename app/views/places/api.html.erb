@@ -1,0 +1,28 @@
+<div class="login_pg">
+  <% if !current_user %>
+  <% end %>
+
+<div>
+
+<h1>First Flight</h1>
+<ul id='results'>
+</ul>
+<h1>Return Flight</h1>
+<ul id='return'>
+</ul
+<ul id='origins'>
+</ul>
+<ul>
+  <% @places.each do |place| %>
+    <li class="flight-checker">
+      <%= place.name %> | <span class="airport"><%= place.airport %></span> | <%= link_to "Select Destination" %>
+    </li>
+  <% end %>
+</ul>
+<%= label_tag :origin %>
+<%= text_field_tag :origin, nil, id:"origin" %>
+<%= label_tag :leaveDate %>
+<%= text_field_tag :leaveDate, nil, id:"leave-date", placeholder: 'yyyy-mm-dd' %>
+<%= label_tag :returnDate %>
+<%= text_field_tag :returnDate, nil, id:"return-date", placeholder: 'yyyy-mm-dd' %>
+<button type="button" id="b">Button</button>
