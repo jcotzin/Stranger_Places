@@ -10,11 +10,11 @@ class Place < ApplicationRecord
   # Place.algolia_reindex
 
   algoliasearch do
-    attribute :name, :description, :latitude, :longitude, :city, :state_province, :country
+    attribute :name, :description, :latitude, :longitude, :city, :state_province, :country, :airport, :main_img
     #all above attributes + extra_attr will be sent
     # add_attribute :extra_attr
     #attributesToIndex needs to be listed by order of importance
-    attributesToIndex ['name', 'city', 'state_province', 'country', 'unordered(description)']
+    attributesToIndex ['name', 'city', 'state_province', 'country', 'country', 'airport', 'main_img' 'unordered(description)']
 
     # tags used for filtering
     # tags do

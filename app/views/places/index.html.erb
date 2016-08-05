@@ -65,79 +65,81 @@
 
   <!-- main page  -->
   <div class="container-full "><%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%>
-      <div class="fullscreen-bg">
-        <!-- <div class="video"> <%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%> -->
-          <p>
-            Hello
-          </p>
-        </div>
+    <div class="fullscreen-bg">
+      <!-- <div class="video"> <%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%> -->
+      <p>
+        Hello
+      </p>
+    </div>
 
-        </div>
-        </div>
+  </div>
+</div>
 
-        <!-- gets hidden -->
-        <div id="hits"></div>
+<!-- gets hidden -->
+<div id="hits"></div>
+</div>
+</main>
+
+<script type="text/html" id="hits-template">
+  <div class="hits">
+    <!-- {{#pageNo}}
+    <div class="page-no">
+    Page {{pageNo}} -->
+    <!-- </div> -->
+    <!-- {{/pageNo}} -->
+    {{#hits}}
+    <a href="#" class="hit" data-toggle="modal" data-target="#{{objectID}}" >
+      <!-- <a href="{{url}}"> -->
+      <div class="cover-img">
+        <img src="{{main_img}}" alt="{{name}}" class="hit-img">
       </div>
-    </main>
-
-    <script type="text/html" id="hits-template">
-      <div class="hits">
-        <!-- {{#pageNo}}
-        <div class="page-no">
-        Page {{pageNo}} -->
-        <!-- </div> -->
-        <!-- {{/pageNo}} -->
-        {{#hits}}
-        <a href="#" class="hit" data-toggle="modal" data-target="#{{objectID}}" >
-          <!-- <a href="{{url}}"> -->
-          <div class="cover-img">
-            <img src="{{image}}" alt="{{name}}" class="hit-img">
-          </div>
-          <!-- <div class="hit-img img-responsive" style="background-image: url('{{image}}');"> -->
-          <p class="name">
-            {{#_snippetResult}}
-            {{{_snippetResult.name.value}}}
-            {{/_snippetResult}}
-            {{^_snippetResult}}
-            {{name}}
-            {{/_snippetResult}}
-          </p>
-          <!-- </div> -->
-          <!-- </a> -->
-          <a>
-            <!-- Modal -->
-            <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">&times;</span></button-->
-                    <h4 class="modal-title" id="popup">{{name}}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="modal_img">
-                      <img src="{{image}}" alt="{{name}}">
-                    </div>
-                    <div class="modal_bio">
-                      <p>{{bio}}</p>
-                    </div>
-                    <a href="{{website}}" target="_blank">{{name}}</a>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a type="button" class="btn btn-primary" href="{{website}}" target="_blank"> visit {{name}}</a>
-                  </div>
+      <!-- <div class="hit-img img-responsive" style="background-image: url('{{image}}');"> -->
+      <p class="name">
+        {{#_snippetResult}}
+        {{{_snippetResult.name.value}}}
+        {{/_snippetResult}}
+        {{^_snippetResult}}
+        {{name}}
+        {{/_snippetResult}}
+      </p>
+      <!-- </div> -->
+      <!-- </a> -->
+      <a>
+        <!-- Modal -->
+        <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">&times;</span></button-->
+                <h4 class="modal-title" id="popup">{{name}}</h4>
+              </div>
+              <div class="modal-body">
+                <div class="modal_img">
+                  <img src="{{main_img}}" alt="{{name}}">
                 </div>
+                <div class="modal_bio">
+                  <p>{{bio}}</p>
+                </div>
+                <a href="{{website}}" target="_blank">{{name}}</a>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a type="button" class="btn btn-primary" href="{{website}}" target="_blank"> visit {{name}}</a>
               </div>
             </div>
-            <!--end modal-->
-            {{/hits}}
           </div>
-        </script>
-        <script type="text/html" id="no-results-template">
-          <div id="no-results-message">
-            <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
-            <a href="#" class="clear-all">Clear all</a>
-          </div>
-        </script>
-        <!-- </body>
-        </html> -->
+        </div>
+        <!--end modal-->
+        {{/hits}}
+      </div>
+    </script>
+    <script type="text/html" id="no-results-template">
+      <div id="no-results-message">
+        <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
+        <a href="#" class="clear-all">Clear all</a>
+      </div>
+    </div>
+
+  </script>
+  <!-- </body>
+  </html> -->
