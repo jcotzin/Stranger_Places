@@ -4,6 +4,7 @@ class Place < ApplicationRecord
   has_many :placetags
   has_many :tags, through: :placetags
   has_many :videos
+  has_and_belongs_to_many :users
   include AlgoliaSearch
 
   #not sure where this goes to index our model

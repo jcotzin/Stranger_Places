@@ -12,6 +12,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    @favorites = current_user.places
+  end
+
+  def association
+    @user_place = current_user.places.create(id: params[:place_id])
+    if @user_place.save
+      render :profile
+      #put what happens if save and if not saved
+    end
+  end
+
+
   private
 
   def user_params
