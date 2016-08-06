@@ -132,7 +132,7 @@ function ready() {
   $("#search-input").click(function(){
     // on clicking the searhc bar hide video
     $(".container-full").hide();
-    $("#hits").animate();
+    $("#hits").show();
   });
 }
 
