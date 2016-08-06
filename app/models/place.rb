@@ -1,10 +1,9 @@
 class Place < ApplicationRecord
-
+include AlgoliaSearch
   has_many :images
   has_many :placetags
   has_many :tags, through: :placetags
   has_many :videos
-  include AlgoliaSearch
 
   #not sure where this goes to index our model
   # Place.algolia_reindex

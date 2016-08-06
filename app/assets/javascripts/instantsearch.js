@@ -128,10 +128,10 @@ function ready() {
 
   // added video hide and hits show not part of aloglia...
 
-  $("#hits").hide();
+  // $("#hits").hide();
   $("#search-input").click(function(){
-    // on clicking the searhc bar hide video
-    $("#hits").show();
+    // on clicking the video hides
+    $("#container-full").hide();
   });
 }
 

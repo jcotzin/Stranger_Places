@@ -83,6 +83,7 @@ p.navbar-logo-main {
   font-weight: 100;
   color: #fff;
   width: 90%;
+  margin-left: 30px;
   padding: 0px 0 0px;
   border: none;
   border-bottom: 3px solid #fff;
@@ -336,8 +337,13 @@ vertical-align: middle;*/
   opacity: 1;
 }
 .modal_img{
-  width: 50%;
+  width: 100%;
 }
+.modal-dialog{
+  max-width: 900px;
+  margin: 0px auto;
+}
+
 a.clear-all {
   font-size: 12px;
   line-height: 1;
