@@ -1,2 +1,6 @@
-<% @favorites do |f| %>
+<h1><%= current_user.name %>'s profile page</h1>
+<% if @favorites %>
+<% @favorites.each do |f| %>
+<%= image_tag f.main_img, :width => "50%" %>
+<% end %>
 <% end %>

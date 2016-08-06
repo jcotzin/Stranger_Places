@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @favorites = current_user.places
+    @favorites = current_user.places if current_user
+
   end
 
   def association
