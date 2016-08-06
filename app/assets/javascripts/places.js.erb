@@ -70,7 +70,7 @@
           var carriers = trips[i].slice[0].segment[0].flight.carrier;
           $('#results').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
 
-          $('#return').append(`<a href="https://www.kayak.com/flights/${arrivalCode}-${origin_code}/${leaveDate}">${origin_code}</a>`);
+          $('#results').append(`<a href="https://www.kayak.com/flights/${arrivalCode}-${origin_code}/${leaveDate}">${origin_code}</a>`);
         }
         $.ajax({
           method: "POST",
