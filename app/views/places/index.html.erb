@@ -1,5 +1,3 @@
-
-
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
@@ -9,14 +7,15 @@
         </div>
         <a href="#!" class="brand-logo center">Strangerplaces</a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">login</a></li>
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#modal2">login</a></li>
+          <li><a class="waves-effect waves-light btn modal-trigger" href="#login">login</a></li>
+          <li><a class="waves-effect waves-light btn modal-trigger" href="#heart">login</a></li>
         </ul>
       </div>
     </nav>
   </div>
 <!-- STARTmain page-->
   <div class="container-full"><%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%>
+  </div>
 <!-- ENDmain page -->
 <!-- START results page -->
 <div id="hits"></div>
@@ -124,7 +123,7 @@
 
 <!-- END results page -->
 <!-- log in modal  -->
-  <div id="modal1" class="modal">
+  <div id="login" class="modal">
     <div class="modal-content">
       <h4>Modal Header</h4>
       <p>A bunch of text</p>
@@ -133,35 +132,15 @@
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
-<!-- user modal -->
-    <div id="modal2" class="modal bottom-sheet">
+<!-- users favorite places go here modal -->
+    <div id="heart" class="modal bottom-sheet">
       <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <h4>users favorite places go here</h4>
+        <p></p>
       </div>
     </div>
 <!-- user favorits modal -->
-    <!-- Modal -->
-    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel2">Right Sidebar</h4>
-                </div>
-
-                <div class="modal-body">
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </p>
-                </div>
-
-            </div><!-- modal-content -->
-        </div><!-- modal-dialog -->
-    </div><!-- modal -->
 
 
 </div><!-- container -->
