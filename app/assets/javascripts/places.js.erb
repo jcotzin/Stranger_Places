@@ -35,7 +35,7 @@
           "childCount": 0,
           "seniorCount": 0
         },
-        "solutions": 5,
+        "solutions": 2,
         "refundable": false
       }
     }
@@ -69,6 +69,8 @@
 
           var carriers = trips[i].slice[0].segment[0].flight.carrier;
           $('#results').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+
+          $('#return').append(`<a href="https://www.kayak.com/flights/${arrivalCode}-${origin_code}/${leaveDate}">${origin_code}</a>`);
         }
         $.ajax({
           method: "POST",
@@ -91,6 +93,7 @@
               arrivalTime = arrivalTime + " Time Zone";
               var carriers = trips[i].slice[0].segment[0].flight.carrier;
               $('#return').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+              $('#return').append(`<a href="https://www.kayak.com/flights/${origin_code}-${arrivalCode}/${leaveDate}">${origin_code}</a>`);
             }
           },
           error: function(error) {
@@ -136,4 +139,4 @@
   $(".button-collapse").sideNav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   //$('.collapsible').collapsible();
-   });    
+   });
