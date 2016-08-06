@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20160805231713) do
   create_table "places_users", id: false, force: :cascade do |t|
     t.integer "user_id",  null: false
     t.integer "place_id", null: false
+    t.index ["place_id", "user_id"], name: "index_places_users_on_place_id_and_user_id", using: :btree
+    t.index ["user_id", "place_id"], name: "index_places_users_on_user_id_and_place_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
