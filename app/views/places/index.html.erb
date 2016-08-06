@@ -6,9 +6,10 @@
           <label for="search"><i class="material-icons">search</i></label>
         </div>
         <a href="#!" class="brand-logo center">Strangerplaces</a>
-        <ul class="right hide-on-med-and-down">
+        <ul class="right">
           <li><a class="waves-effect waves-light btn modal-trigger" href="#login">login</a></li>
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#heart">login</a></li>
+          <li><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#heart">Launch demo modal</button></li>
+          <!-- <label for="search"><i class="material-icons">search</i></label> -->
         </ul>
       </div>
     </nav>
@@ -48,9 +49,14 @@
       <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
+            <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+              <h4 class="modal-title" id="popup">{{name}}</h4>
+          </div>
+          </nav>
             <div class="modal-header">
               <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">&times;</span></button-->
-              <h4 class="modal-title" id="popup">{{name}}</h4>
+              <!-- <h4 class="modal-title" id="popup">{{name}}</h4> -->
             </div>
             <div class="modal-body">
               <div class="modal_img">
@@ -123,7 +129,7 @@
 
 <!-- END results page -->
 <!-- log in modal  -->
-  <div id="login" class="modal">
+  <!-- <div id="login" class="modal">
     <div class="modal-content">
       <h4>Modal Header</h4>
       <p>A bunch of text</p>
@@ -131,14 +137,32 @@
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
-  </div>
+  </div> -->
 <!-- users favorite places go here modal -->
-    <div id="heart" class="modal bottom-sheet">
+<div class="modal fade" id= "heart" tabindex="-1" role="dialog" aria-labelledby="heart">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    <!-- <div id="heart" class="modal bottom-sheet" >
       <div class="modal-content">
         <h4>users favorite places go here</h4>
         <p></p>
       </div>
-    </div>
+    </div> -->
 <!-- user favorits modal -->
 
 

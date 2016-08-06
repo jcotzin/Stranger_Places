@@ -129,7 +129,7 @@ function ready() {
   // added video hide and hits show not part of aloglia...
 
   $("#hits").hide();
-  $("#search-input").click(function(){
+  $("#search-input").keypress(function(){
     // on clicking the searhc bar hide video
     $(".container-full").hide();
     $("#hits").show();
