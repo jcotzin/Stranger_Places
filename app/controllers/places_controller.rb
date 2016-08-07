@@ -1,6 +1,8 @@
 require 'httparty'
 class PlacesController < ApplicationController
   def index
+    @places = Place.all
+
     #using openweather api
   @today = Date.today
   @response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=miami&APPID=612104db0b85a84d80dd7cd48d5516c9')

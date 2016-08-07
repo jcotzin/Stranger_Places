@@ -1,8 +1,9 @@
- $(document).ready(function() {
+ $(document).on("turbolinks:load", function() {
     var destination;
     var leaveDate;
     var returnDate;
     $('.flight-checker').on('click', 'a', function(e){
+      console.log("hello");
       e.preventDefault();
       destination = $(this).parent().find('.airport').html();
       $(this).html("Selected!");
