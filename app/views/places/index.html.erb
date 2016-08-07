@@ -20,6 +20,7 @@
 <!-- START results page -->
 <div id="hits"></div>
 <script type="text/html" id="hits-template">
+  <form>
   <div class="hits">
     <!-- {{#pageNo}}
     <div class="page-no">
@@ -29,11 +30,10 @@
     {{#hits}}
 
     <!-- <a href="{{url}}"> -->
-    <a href="#" class="hit" data-toggle="modal" data-target="#{{objectID}}" >
+    <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
       <div class="cover-img">
         <img src="{{main_img}}" alt="{{name}}" class="hit-img">
       </div>
-      <!-- <div class="hit-img img-responsive" style="background-image: url('{{image}}');"> -->
       <p class="name">
         {{#_snippetResult}}
         {{{_snippetResult.name.value}}}
@@ -60,8 +60,9 @@
                   <div class="modal-body">
                   <div class="tab-content">
                     <div id="bio" class="tab-pane fade in active">
+
                       <h1>{{name}}</h1>
-                      <p>{{description}}.Ahu Tongariki is the largest ahu on Easter Island. Its moai were toppled during the island's civil wars and in the twentieth century the ahu was swept inland by a tsunami. It has since been restored and has fifteen moai including an 86 tonne moai that was the heaviest ever erected on the island. Ahu Tongariki is one kilometer from Rano Raraku and Poike in the Hotu-iti area of Rapa Nui National Park. All the moai here face sunset during Summer Solstice.</p>
+                      <p> {{description}} </p>
                     </div>
                     <div id="photos" class="tab-pane fade">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
