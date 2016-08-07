@@ -20,19 +20,27 @@
 <!-- START results page -->
 <div id="hits"></div>
 <script type="text/html" id="hits-template">
-<div class="hits">
+  <form>
+
+<div class="hits" >
     <!-- {{#pageNo}}
     <div class="page-no">
     Page {{pageNo}} -->
     <!-- </div> -->
     <!-- {{/pageNo}} -->
     {{#hits}}
-
       <!-- <a href="{{url}}"> -->
-      <a href="#" class="hit" data-toggle="modal" data-target="#{{objectID}}" >
+      <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
         <div class="cover-img">
           <img src="{{main_img}}" alt="{{name}}" class="hit-img">
+<!-- <div class="weather"> -->
+<!-- <h2>{{name}}</h2> -->
+<h3><%= @today %></h3>
+<h3><%= @description %></h3>
+<h3><%= @degrees %>&nbsp;Degrees Fahrenheit</h3>
+<!-- </div> -->
         </div>
+      </form>
       <!-- <div class="hit-img img-responsive" style="background-image: url('{{image}}');"> -->
         <p class="name">
           {{#_snippetResult}}

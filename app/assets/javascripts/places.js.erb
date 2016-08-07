@@ -1,4 +1,30 @@
  $(document).on("turbolinks:load", function() {
+   $("#search-input").keypress(function(){
+    console.log($(this));
+    var array = [];
+   $.each($('.hit'), function(i,v) {
+     array.push($(v).data('id'));
+   });
+  //  console.log(objectId);
+
+  $.ajax({
+    type: "GET",
+    url: "/city",
+    data: {data: array},
+    success: function(data) {
+      console.log(data);
+      $.each($('.hit'), function(i,v) {
+        $(v).find('.name').append(data[i].description);
+        $(v).find('.name').append(data[i].degrees);
+
+      });
+    }
+   //  data:
+   });
+
+ });
+
+
     var destination;
     var leaveDate;
     var returnDate;
