@@ -129,3 +129,41 @@
   	});
 
   });
+
+  // Define Bottom Sheet animation
+  if ($modal.hasClass('bottom')) {
+    $modal.velocity({bottom: "0", opacity: 1}, {
+      duration: options.in_duration,
+      queue: false,
+      ease: "easeOutCubic",
+      // Handle modal ready callback
+      complete: function() {
+        if (typeof(options.ready) === "function") {
+          options.ready();
+        }
+      }
+    });
+  }
+  // Define Bottom Sheet animation
+  if ($modal.hasClass('bottom')) {
+    $modal.velocity({bottom: "-100%", opacity: 0}, {
+      duration: options.out_duration,
+      queue: false,
+      ease: "easeOutCubic",
+      // Handle modal ready callback
+      complete: function() {
+        $overlay.css({display:"none"});
+
+        // Call complete callback
+        if (typeof(options.complete) === "function") {
+          options.complete();
+        }
+        $overlay.remove();
+        _stack--;
+      }
+    });
+  }
+  $('.carousel').carousel({
+  interval: false
+  });
+  $('.modal-body').scrollspy({ target: '#navbar-example' })

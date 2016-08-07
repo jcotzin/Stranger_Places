@@ -1,27 +1,26 @@
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <div class="input-field">
-          <input id="search-input" type="text" placeholder="Discover Sunny hiking "/>
-          <label for="search"><i class="material-icons">search</i></label>
-        </div>
-        <a href="#!" class="brand-logo center">Strangerplaces</a>
-        <ul class="right">
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#login">login</a></li>
-          <li><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#heart">Launch demo modal</button></li>
-          <!-- <label for="search"><i class="material-icons">search</i></label> -->
-        </ul>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="input-field">
+        <input id="search-input" type="text" placeholder="Discover Sunny hiking "/>
+        <label for="search"><i class="material-icons">search</i></label>
       </div>
-    </nav>
-  </div>
+      <a href="#!" class="brand-logo center">Strangerplaces</a>
+      <ul class="right">
+        <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+        <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 <!-- STARTmain page-->
-  <div class="container-full"><%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%>
-  </div>
+<div class="container-full"><%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%>
+</div>
 <!-- ENDmain page -->
 <!-- START results page -->
 <div id="hits"></div>
 <script type="text/html" id="hits-template">
-<div class="hits">
+  <div class="hits">
     <!-- {{#pageNo}}
     <div class="page-no">
     Page {{pageNo}} -->
@@ -29,143 +28,176 @@
     <!-- {{/pageNo}} -->
     {{#hits}}
 
-      <!-- <a href="{{url}}"> -->
-      <a href="#" class="hit" data-toggle="modal" data-target="#{{objectID}}" >
-        <div class="cover-img">
-          <img src="{{main_img}}" alt="{{name}}" class="hit-img">
-        </div>
+    <!-- <a href="{{url}}"> -->
+    <a href="#" class="hit" data-toggle="modal" data-target="#{{objectID}}" >
+      <div class="cover-img">
+        <img src="{{main_img}}" alt="{{name}}" class="hit-img">
+      </div>
       <!-- <div class="hit-img img-responsive" style="background-image: url('{{image}}');"> -->
-        <p class="name">
-          {{#_snippetResult}}
-          {{{_snippetResult.name.value}}}
-          {{/_snippetResult}}
-          {{^_snippetResult}}
-          {{name}}
-          {{/_snippetResult}}
-        </p>
-        <!-- </div> -->
-      </a>
-      <!-- Modal -->
-      <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-              <h4 class="modal-title" id="popup">{{name}}</h4>
-          </div>
+      <p class="name">
+        {{#_snippetResult}}
+        {{{_snippetResult.name.value}}}
+        {{/_snippetResult}}
+        {{^_snippetResult}}
+        {{name}}
+        {{/_snippetResult}}
+      </p>
+      <!-- </div> -->
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav modal-place">
+                  <ul class="nav nav-tabs modal-place tab-modal">
+                    <li class="active"><a data-toggle="tab" href="#bio">bio</a></li>
+                    <li><a data-toggle="tab" href="#photos">Photos</a></li>
+                    <li><a data-toggle="tab" href="#videos">Videos</a></li>
+                    <li><a data-toggle="tab" href="#flights">Flights</a></li>
+                  </ul>
+                  <div class="modal-body">
+                  <div class="tab-content">
+                    <div id="bio" class="tab-pane fade in active">
+                      <h1>{{name}}</h1>
+                      <p>{{description}}.Ahu Tongariki is the largest ahu on Easter Island. Its moai were toppled during the island's civil wars and in the twentieth century the ahu was swept inland by a tsunami. It has since been restored and has fifteen moai including an 86 tonne moai that was the heaviest ever erected on the island. Ahu Tongariki is one kilometer from Rano Raraku and Poike in the Hotu-iti area of Rapa Nui National Park. All the moai here face sunset during Summer Solstice.</p>
+                    </div>
+                    <div id="photos" class="tab-pane fade">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                          </ol>
+
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                              <img src="{{main_img}}" alt="Chania">
+                              <div class="carousel-caption">
+                                <h3>Chania</h3>
+                                <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                              </div>
+                            </div>
+
+                            <div class="item">
+                              <img src="{{main_img}}" alt="Chania">
+                              <div class="carousel-caption">
+                                <h3>Chania</h3>
+                                <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                              </div>
+                            </div>
+
+                            <div class="item">
+                              <img src="{{main_img}}" alt="Flower">
+                              <div class="carousel-caption">
+                                <h3>Flowers</h3>
+                                <p>Beatiful flowers in Kolymbari, Crete.</p>
+                              </div>
+                            </div>
+
+                            <div class="item">
+                              <img src="{{main_img}}" alt="Flower">
+                              <div class="carousel-caption">
+                                <h3>Flowers</h3>
+                                <p>Beatiful flowers in Kolymbari, Crete.</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                    </div>
+                    <div id="videos" class="tab-pane fade">
+                      <h1>view videos</h1>
+                    </div>
+                    <div id="flights" class="tab-pane fade">
+                      <h1>Check flights</h1>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+            </div>
           </nav>
-            <div class="modal-header">
-              <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">&times;</span></button-->
-              <!-- <h4 class="modal-title" id="popup">{{name}}</h4> -->
-            </div>
-            <div class="modal-body">
-              <div class="modal_img">
-                <img src="{{main_img}}" alt="{{name}}">
-              </div>
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="{{main_img}}" ealt="Chania" width="460" height="345">
-      </div>
-
-      <div class="item">
-        <img src="{{main_img}}"alt="Chania" width="460" height="345">
-      </div>
-
-      <div class="item">
-        <img src="{{main_img}}"alt="Flower" width="460" height="345">
-      </div>
-
-      <div class="item">
-        <img src="{{main_img}}"alt="Flower" width="460" height="345">
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-              <div class="modal_bio">
-                <p>{{bio}}</p>
-              </div>
-              <a href="{{website}}" target="_blank">{{name}}</a>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <a type="button" class="btn btn-primary" href="{{website}}" target="_blank"> visit {{name}}</a>
-            </div>
           </div>
         </div>
       </div>
-      <!--end modal-->
+    <!--end modal-->
 
-        {{/hits}}
-      </div>
-    </script>
-    <script type="text/html" id="no-results-template">
-      <div id="no-results-message">
-        <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
-        <a href="#" class="clear-all">Clear all</a>
-      </div>
-    </div>
+    {{/hits}}
+  </div>
+</script>
+<script type="text/html" id="no-results-template">
+  <div id="no-results-message">
+    <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
+    <a href="#" class="clear-all">Clear all</a>
+  </div>
+</div>
 
-  </script>
+</script>
 
 
 <!-- END results page -->
 <!-- log in modal  -->
-  <!-- <div id="login" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+
+    <div class="loginmodal-container">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#login">login</a></li>
+        <li><a data-toggle="tab" href="#signup">Sign up</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="login" class="tab-pane fade in active">
+          <h1>Login to Your Account</h1><br>
+          <form>
+            <input type="text" name="user" placeholder="Username">
+            <input type="password" name="pass" placeholder="Password">
+            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+          </form>
+          <a href="#">Forgot Password</a>
+        </div>
+        <div id="signup" class="tab-pane fade">
+          <h1>sign up</h1><br>
+          <form>
+            <input type="text" name="user" placeholder="Username">
+            <input type="password" name="pass" placeholder="Password">
+            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+          </form>
+          <a href="#">Forgot Password</a>
+        </div>
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div> -->
+  </div>
+</div>
 <!-- users favorite places go here modal -->
-<div class="modal fade" id= "heart" tabindex="-1" role="dialog" aria-labelledby="heart">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+<div class="modal" id= "heart" tabindex="-1" role="dialog" aria-labelledby="heart">
+  <div class="modal-content bottom">
+    <h4>users favorite places go here</h4>
+    <p></p>
+  </div>
+</div><!-- /.modal-content -->
 </div><!-- /.modal -->
 
-    <!-- <div id="heart" class="modal bottom-sheet" >
-      <div class="modal-content">
-        <h4>users favorite places go here</h4>
-        <p></p>
-      </div>
-    </div> -->
+<!-- <div id="heart" class="modal bottom-sheet" >
+<div class="modal-content">
+<h4>users favorite places go here</h4>
+<p></p>
+</div>
+</div> -->
 <!-- user favorits modal -->
-
-
 
 </div><!-- container -->
 <!-- </div> -->
