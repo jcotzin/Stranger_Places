@@ -3,19 +3,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/'
     else
-      redirect_to '/signup'
+      redirect_to '/'
     end
   end
 
-  def profile
-    @favorites = current_user.places if current_user
-
-  end
 
   def association
     @user_place = current_user.places.create(id: params[:place_id])

@@ -169,7 +169,8 @@
 
       <div class="tab-content">
         <div id="login" class="tab-pane login-tab fade in active">
-          <%= form_tag root_path do %>
+
+          <%= form_tag @user, url: login_path do %>
           <h1>Login to Your Account</h1><br>
           <form>
             <!-- <input type="text" name="user" placeholder="Username"> -->
@@ -184,7 +185,7 @@
           <div class="fb-login-button" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
         </div>
         <div id="signup" class="tab-pane fade">
-          <%= form_for @user, url: root_path do |f| %>
+          <%= form_for @user do |f| %>
           <h1>Sign up</h1><br>
           <form>
             <!-- <input type="text" name="user" placeholder="Username"> -->
@@ -207,10 +208,18 @@
   </div>
 </div>
 <!-- users favorite places go here modal -->
+
+
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
   <div class="bottom" role="document">
     <div class="fav">
       <p>users favorits places</p>
+      <h1><%= current_user.name %>'s profile page</h1>
+      <% if @favorites %>
+      <% @favorites.each do |f| %>
+      <%= image_tag f.main_img, :width => "50%" %>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>
