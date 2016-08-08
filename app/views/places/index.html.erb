@@ -14,9 +14,7 @@
           <% if current_user %>
           <%= link_to "Log Out", logout_path %>
           <% end %>
-          <label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label>
           </li>
-
       </ul>
     </div>
   </nav>
@@ -219,15 +217,9 @@
 
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
-<<<<<<< HEAD
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <% if current_user %>
-=======
-  <div class="bottom" role="document">
-    <div class="fav">
-      <p>users favorits places</p>
->>>>>>> e9b197c6b058754ccccfd33fd46149ef4b8405fe
       <h1><%= current_user.name %>'s profile page</h1>
       <% if @favorites %>
       <% @favorites.each do |f| %>
