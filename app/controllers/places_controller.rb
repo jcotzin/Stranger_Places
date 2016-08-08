@@ -1,14 +1,8 @@
 require 'httparty'
 class PlacesController < ApplicationController
   def index
+    @user = User.new
     @places = Place.all
-
-    # @parsed = @response.parsed_response
-    # @description = @response.parsed_response["weather"][0]["description"]
-    # @temp = @parsed["main"]["temp"]
-    # @fahrenheit = @temp * 1.8
-    # @degrees = (@fahrenheit - 459.67).round
-
 
     #clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
   end
@@ -17,17 +11,15 @@ class PlacesController < ApplicationController
     #using openweather api
     response = []
     unless params[:data].empty?
-      params[:data].each do |id|
-        place = Place.find(id)
-        city = place.city
-        weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=612104db0b85a84d80dd7cd48d5516c9")
-        parsed = weather.parsed_response
-        temp = parsed["main"]["temp"]
-        fahrenheit = temp * 1.8
+      cities = Place.where(id: params[:data]).pluck(:city);
+      cities.each do |city|
+        weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=612104db0b85a84d80dd7cd48d5516c9").parsed_response
+        kelvin = weather["main"]["temp"]
+        fahrenheit = ((kelvin * 1.8) - 459.67).round
 
         response <<  {
-          description: parsed["weather"][0]["description"],
-          degrees: (fahrenheit - 459.67).round
+          description: to_weather_gif(weather["weather"][0]["description"]),
+          degrees: fahrenheit
         }
         # sleep(1);
       end
@@ -41,11 +33,11 @@ class PlacesController < ApplicationController
     # @degrees = (@fahrenheit - 459.67).round
     p "+++++++++++++++++++++++++++"
     render json: response
-
   end
 
   def create
     # @place = Place.new(place_params)
+
     # if @place.save
     #   session[:place_id] = @place.id
     #   redirect_to '/'
@@ -61,5 +53,26 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:name, :description, :latitude, :longitude, :city, :state_province, :country, :airport, :main_img)
+  end
+# clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
+  def to_weather_gif(description)
+    case description
+    when "clear sky"
+      helpers.image_tag('sunny.gif')
+    when "few clouds"
+      helpers.image_tag('cloudy.gif')
+    when "scattered clouds"
+      helpers.image_tag('overcast.gif')
+    when "shower rain"
+      helpers.image_tag('sunny.gif')
+    when "rain"
+      helpers.image_tag('windy.gif')
+    when "thunderstorm"
+      helpers.image_tag('thunder.gif')
+    when "snow"
+      helpers.image_tag('snow.gif')
+    when "broken clouds"
+      helpers.image_tag('overcast.gif')
+    end
   end
 end

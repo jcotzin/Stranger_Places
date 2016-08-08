@@ -7,40 +7,44 @@
       </div>
       <a href="#!" class="brand-logo center">Strangerplaces</a>
       <ul class="right">
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=96&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=1463928533633255" width="96" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-        <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
-      </ul>
-    </div>
-  </nav>
+      <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
+    </ul>
+  </div>
+</nav>
 </div>
 <!-- STARTmain page-->
 <div class="container-full">
   <div class="center">
     <h1>Welcome</h1>
-  </div>
-  <div class="container-video">
-    <video autoplay="autoplay" height="100%" width="100%" loop="loop" src="/assets/TravelLoop02-3852829f0fa9e197c269ad4e8b8bf7f62940072a1bd26490cf392f4dafc5bbf8.mp4"></video>
-  </div>
+    </div>
+  <video autoplay="autoplay" height="100%" width="100%" loop="loop" src="/assets/TravelLoop02-3852829f0fa9e197c269ad4e8b8bf7f62940072a1bd26490cf392f4dafc5bbf8.mp4"></video>
 </div>
 <!-- ENDmain page -->
 <!-- START results page -->
 <div id="hits"></div>
 <script type="text/html" id="hits-template">
   <form>
-    <div class="hits">
+  <div class="hits">
+
+    {{#hits}}
+
+    <!-- <a href="{{url}}"> -->
+    <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
+      <div class="cover-img">
+        <img src="{{main_img}}" alt="{{name}}" class="hit-img">
+      </div>
+      <p class="name">
+        {{#_snippetResult}}
+        {{{_snippetResult.name.value}}}
+        {{/_snippetResult}}
+        {{^_snippetResult}}
+        {{name}}
+        {{/_snippetResult}}
+      </p>
+      <div class="weather"></div>
       {{#hits}}
-      <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
-        <div class="cover-img" style="background-image: url('{{main_img}}')">
-          <p class="name">
-            {{#_snippetResult}}
-            {{{_snippetResult.name.value}}}
-            {{/_snippetResult}}
-            {{^_snippetResult}}
-            {{name}}
-            {{/_snippetResult}}
-          </p>
-          <div class="weather"></div>
-        </div>
       </a>
       <!-- Modal -->
       <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
@@ -50,18 +54,19 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav modal-place">
                   <ul class="nav nav-tabs modal-place tab-modal">
-                    <li class="active"><a data-toggle="tab" href="#{{objectID}}-bio">bio</a></li>
-                    <li><a data-toggle="tab" href="#{{objectID}}-photos">Photos</a></li>
-                    <li><a data-toggle="tab" href="#{{objectID}}-videos">Videos</a></li>
-                    <li><a data-toggle="tab" href="#{{objectID}}-flights">Flights</a></li>
+                    <li class="active"><a data-toggle="tab" href="#bio">bio</a></li>
+                    <li><a data-toggle="tab" href="#photos">Photos</a></li>
+                    <li><a data-toggle="tab" href="#videos">Videos</a></li>
+                    <li><a data-toggle="tab" href="#flights">Flights</a></li>
                   </ul>
                   <div class="modal-body">
                     <div class="tab-content">
-                      <div id="{{objectID}}-bio" class="tab-pane fade in active bio">
+                      <div id="bio" class="tab-pane fade in active">
+
                         <h1>{{name}}</h1>
                         <p> {{description}} </p>
                       </div>
-                      <div id="{{objectID}}-photos" class="tab-pane fade photo">
+                      <div id="photos" class="tab-pane fade">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
                           <ol class="carousel-indicators">
@@ -70,6 +75,7 @@
                             <li data-target="#myCarousel" data-slide-to="2"></li>
                             <li data-target="#myCarousel" data-slide-to="3"></li>
                           </ol>
+
                           <!-- Wrapper for slides -->
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
@@ -79,6 +85,7 @@
                                 <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
                               </div>
                             </div>
+
                             <div class="item">
                               <img src="{{main_img}}" >
                               <div class="carousel-caption">
@@ -86,6 +93,7 @@
                                 <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
                               </div>
                             </div>
+
                             <div class="item">
                               <img src="{{main_img}}" >
                               <div class="carousel-caption">
@@ -93,6 +101,7 @@
                                 <p>Beatiful flowers in Kolymbari, Crete.</p>
                               </div>
                             </div>
+
                             <div class="item">
                               <img src="{{main_img}}" >
                               <div class="carousel-caption">
@@ -101,6 +110,7 @@
                               </div>
                             </div>
                           </div>
+
                           <!-- Left and right controls -->
                           <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -112,30 +122,38 @@
                           </a>
                         </div>
                       </div>
-                      <div id="{{objectID}}-videos" class="tab-pane fade videos">
+                      <div id="videos" class="tab-pane fade">
                         <h1>view videos</h1>
                       </div>
-                      <div id="{{objectID}}-flights" class="tab-pane fade flights">
-                        <div id="{{objectID}}-flight-information">
+                      <div id="flights" class="tab-pane fade">
+                        <h1>Check flights</h1>
+
+                        <div id="flight-information">
                           <h1>First Flight</h1>
-                          <ul id='{{objectID}}-results'>
+                          <ul id='results'>
                           </ul>
                           <h1>Return Flight</h1>
-                          <ul id='{{objectID}}-return'>
+                          <ul id='return'>
                           </ul>
-                          <ul id='{{objectID}}-origins'>
+                          <ul id='origins'>
                           </ul>
-                          <!-- <h1>{{name}}</h1> -->
-                          <%= label_tag :airport %>
-                          <input type="text" name="airport" class='airport' value={{airport}}>
+                          <ul>
+                            <!-- <h1>{{name}}</h1> -->
+                            <% @places.each do |place| %>
+                            <li class="flight-checker">
+                              <%= place.name %> | <span class="airport"><%= place.airport %></span> | <%= link_to "Select Destination", remote:true%>
+                            </li>
+                            <% end %>
+                          </ul>
                           <%= label_tag :origin %>
-                          <%= text_field_tag :origin, nil, class:"origin" %>
+                          <%= text_field_tag :origin, nil, id:"origin" %>
                           <%= label_tag :leaveDate %>
-                          <%= text_field_tag :leaveDate, nil, class:"leave-date", placeholder: 'yyyy-mm-dd' %>
+                          <%= text_field_tag :leaveDate, nil, id:"leave-date", placeholder: 'yyyy-mm-dd' %>
                           <%= label_tag :returnDate %>
-                          <%= text_field_tag :returnDate, nil, class:"return-date", placeholder: 'yyyy-mm-dd' %>
-                          <button type="button" class="b" data-objectid="{{objectID}}">Button</button>
+                          <%= text_field_tag :returnDate, nil, id:"return-date", placeholder: 'yyyy-mm-dd' %>
+                          <button type="button" id="b">Button</button>
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -146,16 +164,20 @@
         </div>
       </div>
       <!--end modal-->
+
       {{/hits}}
     </div>
   </script>
   <script type="text/html" id="no-results-template">
     <div id="no-results-message">
-      <p>We didn’t find any results for the search <em>“{{query}}”</em></p>
+      <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
       <a href="#" class="clear-all">Clear all</a>
     </div>
   </div>
+
 </script>
+
+
 <!-- END results page -->
 <!-- log in modal  -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -163,12 +185,12 @@
 
     <div class="loginmodal-container">
       <ul class="nav nav-tabs">
-        <li><a data-toggle="tab" href="#login">login</a></li>
+        <li class="active"><a data-toggle="tab" href="#login">login</a></li>
         <li><a data-toggle="tab" href="#signup">Sign up</a></li>
       </ul>
 
       <div class="tab-content">
-        <div id="login" class="tab-pane login-tab fade in active">
+        <div id="login" class="tab-pane fade in active">
           <%= form_tag root_path do %>
           <h1>Login to Your Account</h1><br>
           <form>
@@ -181,7 +203,7 @@
             <% end %>
           </form>
           <a href="#">Forgot Password</a>
-          <div class="fb-login-button" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
+            <div class="fb-login-button" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
         </div>
         <div id="signup" class="tab-pane fade">
           <%= form_for @user, url: root_path do |f| %>
@@ -202,15 +224,25 @@
           </form>
           <a href="#">Forgot Password</a>
         </div>
-      </div>
     </div>
   </div>
 </div>
 <!-- users favorite places go here modal -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <h1>users favorits places</h1>
-    </div>
+<div class="modal" id= "heart" tabindex="-1" role="dialog" aria-labelledby="heart">
+  <div class="modal-content bottom">
+    <h4>users favorite places go here</h4>
+    <p></p>
   </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal -->
+
+<!-- <div id="heart" class="modal bottom-sheet" >
+<div class="modal-content">
+<h4>users favorite places go here</h4>
+<p></p>
 </div>
+</div> -->
+<!-- user favorits modal -->
+
+</div><!-- container -->
+<!-- </div> -->

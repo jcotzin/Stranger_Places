@@ -1,51 +1,42 @@
 $(document).on("turbolinks:load", function() {
   $("#search-input").keypress(function(){
-   console.log($(this));
-   var array = [];
-  $.each($('.hit'), function(i,v) {
-    array.push($(v).data('id'));
-  });
- //  console.log(objectId);
- $.ajax({
-   type: "GET",
-   url: "/city",
-   data: {data: array},
-   success: function(data) {
-     console.log(data);
-     $.each($('.hit'), function(i,v) {
-       var desc = data[i].description;
-       if (desc == "clear sky") {
-        //  $(v).find('.weather').append('<img src="">');
-        $(v).find('.sunny')
-
-       }
-       $(v).find('.weather').append(data[i].description);
-       $(v).find('.weather').append(data[i].degrees);
-     });
-   }
-  //  data:
-  });
-});
-    var destination;
-    var leaveDate;
-    var returnDate;
-    $('.flight-checker').on('click', 'a', function(e){
-      console.log("hello");
-      e.preventDefault();
-      destination = $(this).parent().find('.airport').html();
-      $(this).html("Selected!");
+    // console.log($(this));
+    var array = [];
+    $.each($('.hit'), function(i,v) {
+      array.push($(v).data('id'));
     });
-    $('#b').on('click', function() {
-      var origin = $('#origin').val();
-      leaveDate = $('#leave-date').val();
-      returnDate = $('#return-date').val();
-      console.log(returnDate, leaveDate);
-      console.log(origin);
-      get_flight_fares(origin, destination, leaveDate, returnDate);
-    });
-
-  });
-
+    // get weather data via ajax
+    $.ajax({
+      type: "GET",
+      url: "/city",
+      data: {data: array},
+      success: function(data) {
+        //  console.log(data);
+        var hits = $('.hit');
+        for (var i = 0; i < data.length; i++) {
+          var hit = $(hits[i]);
+          var city = data[i];
+          console.log(city, city.description, city.degrees);
+          hit.find('.weather').append(city.degrees).append(city.description);
+        }
+      }
+    })
+    .done(function(){
+      $('.b').each(function(index, button) {
+        // console.log(button);
+        $(button).on('click', function() {
+          destination = $(this).parent().find('.airport').val()
+          var origin = $(this).parent().find('.origin').val();
+          leaveDate = $(this).parent().find('.leave-date').val();
+          returnDate = $(this).parent().find('.return-date').val();
+          console.log(returnDate, leaveDate);
+          console.log(origin);
+          get_flight_fares(origin, destination, leaveDate, returnDate, $(this).data('objectid'));
+          });
+        });
+      });
+    }); // end search keypress event
+  });// end search document
   function flightRequest(origin, destination, date) {
     return {
       "request": {
@@ -68,16 +59,14 @@ $(document).on("turbolinks:load", function() {
       }
     }
   }
-
-  function get_flight_fares(origin, destination, leaveDate, returnDate){
-    console.log("it works");
+  function get_flight_fares(origin, destination, leaveDate, returnDate, placeId){
+    console.log("it works", placeId);
     $.ajax({
       method: "POST",
       //Set up your request URL and API Key.
       url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCSI8n4_Jm5nvokRoscrR1LZaCdxnxWjw8",
       contentType: 'application/json',
       dataType: 'json',
-
       data: JSON.stringify(flightRequest(origin, destination, leaveDate)),
       success: function (data) {
         console.log(data);
@@ -85,6 +74,7 @@ $(document).on("turbolinks:load", function() {
         var trips = data.trips.tripOption;
         var complete_flights = [];
         for (var i = 0; i < trips.length; i++) {
+          console.log('result', trips[i]);
           var price = trips[i].saleTotal;
           var origin_code = trips[i].slice[0].segment[0].leg[0].origin;
           var departureTime = trips[i].slice[0].segment[0].leg[0].departureTime;
@@ -94,22 +84,20 @@ $(document).on("turbolinks:load", function() {
           var arrivalCode = segment.leg[0].destination;
           var arrivalTime = segment.leg[0].arrivalTime;
           arrivalTime = arrivalTime + " Time Zone";
-
           var carriers = trips[i].slice[0].segment[0].flight.carrier;
-          $('#results').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
-
-          $('#results').append(`<a href="https://www.kayak.com/flights/${arrivalCode}-${origin_code}/${leaveDate}">${origin_code}</a>`);
+          $('#' + placeId + '-results').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+          $('#' + placeId + '-results').append(`<a href="https://www.kayak.com/flights/${arrivalCode}-${origin_code}/${leaveDate}">${origin_code}</a>`);
         }
         $.ajax({
           method: "POST",
           url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCSI8n4_Jm5nvokRoscrR1LZaCdxnxWjw8",
           contentType: 'application/json',
           dataType: 'json',
-
           data: JSON.stringify(flightRequest(destination, origin, returnDate)),
           success: function(data) {
             var trips = data.trips.tripOption;
             for (var i = 0; i < trips.length; i++) {
+              console.log('return', trips[i]);
               var price = trips[i].saleTotal;
               var origin_code = trips[i].slice[0].segment[0].leg[0].origin;
               var departureTime = trips[i].slice[0].segment[0].leg[0].departureTime;
@@ -120,8 +108,8 @@ $(document).on("turbolinks:load", function() {
               var arrivalTime = segment.leg[0].arrivalTime;
               arrivalTime = arrivalTime + " Time Zone";
               var carriers = trips[i].slice[0].segment[0].flight.carrier;
-              $('#return').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
-              $('#return').append(`<a href="https://www.kayak.com/flights/${origin_code}-${arrivalCode}/${leaveDate}">${origin_code}</a>`);
+              $('#' + placeId + '-return').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+              $('#' + placeId + '-return').append(`<a href="https://www.kayak.com/flights/${origin_code}-${arrivalCode}/${leaveDate}">${origin_code}</a>`);
             }
           },
           error: function(error) {
@@ -129,69 +117,10 @@ $(document).on("turbolinks:load", function() {
           }
         });
       },
-
-
       error: function(error){
         console.log("error:");
         console.log(error);
-        //Error Handling for our requestgle QPX Failed.");
+        //Error Handling for our request QPX Failed.");
       }
     });
   }
-// added js script for tab function
-  $(function() {
-
-      $('#login-form-link').click(function(e) {
-  		$("#login-form").delay(100).fadeIn(100);
-   		$("#register-form").fadeOut(100);
-  		$('#register-form-link').removeClass('active');
-  		$(this).addClass('active');
-  		e.preventDefault();
-  	});
-  	$('#register-form-link').click(function(e) {
-  		$("#register-form").delay(100).fadeIn(100);
-   		$("#login-form").fadeOut(100);
-  		$('#login-form-link').removeClass('active');
-  		$(this).addClass('active');
-  		e.preventDefault();
-  	});
-
-  });
-
-  // Define Bottom Sheet animation
-  if ($modal.hasClass('bottom')) {
-    $modal.velocity({bottom: "0", opacity: 1}, {
-      duration: options.in_duration,
-      queue: false,
-      ease: "easeOutCubic",
-      // Handle modal ready callback
-      complete: function() {
-        if (typeof(options.ready) === "function") {
-          options.ready();
-        }
-      }
-    });
-  }
-  // Define Bottom Sheet animation
-  if ($modal.hasClass('bottom')) {
-    $modal.velocity({bottom: "-100%", opacity: 0}, {
-      duration: options.out_duration,
-      queue: false,
-      ease: "easeOutCubic",
-      // Handle modal ready callback
-      complete: function() {
-        $overlay.css({display:"none"});
-
-        // Call complete callback
-        if (typeof(options.complete) === "function") {
-          options.complete();
-        }
-        $overlay.remove();
-        _stack--;
-      }
-    });
-  }
-  $('.carousel').carousel({
-  interval: false
-  });
-  $('.modal-body').scrollspy({ target: '#navbar-example' })

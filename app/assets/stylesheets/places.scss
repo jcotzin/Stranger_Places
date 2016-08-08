@@ -1,17 +1,6 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-// .video {
-//   position: fixed;
-//   left: 50%;
-//   min-width: 100%;
-//   min-height: 100%;
-//   width: auto;
-//   height: auto;
-//   z-index: -100;
-//   transform: translateX(-50%);
-//   margin: 0;
-//   // opacity: 0.9;
 // }
 // *****************Materialize css for bootstrap
 @media only screen and (max-width: 992px) {
@@ -272,7 +261,8 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
   max-height: 100%;
   background-color: rgba(0, 0, 0, 0);
 }
-img{
+
+.cover-img {
   width:100%;
 }
 
@@ -311,7 +301,7 @@ img{
     width: 100%;
     text-align: center;
     }
-    h1, #focus, #greeting h2, #introduction, #login {
+    h1, #focus, #greeting h2, #introduction,{
     text-align: center;
     line-height: 1;
     padding: 0;
@@ -332,10 +322,17 @@ img{
     margin-bottom: -81px;
     text-align: center;
     }
-  video{
-    opacity:0.7;
-  }
 /******************STYLING FOR PLACES MODAL*******************/
+.flights {
+  color: black;
+  text-align: left;
+}
+#flight-information h1{
+  color:black;
+}
+#flight-information ul{
+  color:black;
+}
 .modal-place{
   width: 100%;
 }
@@ -397,6 +394,7 @@ padding-top: 50px;
   margin-right: 0px;
 }
 .bottom{
+  height:50px;
   border-radius: 0px;
   bottom: 0px;
   position: absolute;
@@ -460,14 +458,14 @@ border-radius:0px;
 .carousel-inner>.item>a>img, .carousel-inner>.item>img{
   height:100%;
 }
-#bio{
+.bio {
   padding: 5px 130px;
 }
-#bio h1 {
+.bio h1 {
   color:black;
   text-align: center;
 }
-#bio p {
+.bio p {
   color:black;
   text-align: center;
 }
@@ -559,12 +557,13 @@ border-radius:0px;
   font-weight: 400;
   text-align: center;
   display: inline-block;
-  opacity: 0.6;
   transition: opacity ease 0.5s;
 }
 
 .login-help{
   font-size: 12px;
 }
+.login-tab{
 
+}
 /****************** END STYLING FOR LOGIN & SIGNUP MODALS*******************/

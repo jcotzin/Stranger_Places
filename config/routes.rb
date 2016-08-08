@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'places/index'
   root 'places#index'
-
+  post '/' => 'places#index'
 
   get '/login' => 'sessions#new'
 
