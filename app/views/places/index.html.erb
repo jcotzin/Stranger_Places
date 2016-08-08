@@ -7,8 +7,16 @@
       </div>
       <a href="#!" class="brand-logo center">Strangerplaces</a>
       <ul class="right">
+        <% if !current_user %>
         <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-        <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
+        <li>
+          <% end %>
+          <% if current_user %>
+          <%= link_to "Log Out", logout_path %>
+          <% end %>
+          <label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label>
+          </li>
+
       </ul>
     </div>
   </nav>
@@ -213,11 +221,12 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
+      <% if current_user %>
       <h1><%= current_user.name %>'s profile page</h1>
-
       <% if @favorites %>
       <% @favorites.each do |f| %>
       <%= image_tag f.main_img, :width => "50%" %>
+      <% end %>
       <% end %>
       <% end %>
     </div>

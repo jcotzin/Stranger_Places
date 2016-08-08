@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   # get 'places/index'
   root 'places#index'
   post '/' => 'places#index'
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   get '/api' => 'places#api'
 
   get '/city' => 'places#city'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
