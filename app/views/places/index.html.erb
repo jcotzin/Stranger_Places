@@ -21,36 +21,36 @@
 <div id="hits"></div>
 <script type="text/html" id="hits-template">
   <form>
-  <div class="hits">
-    <!-- {{#pageNo}}
-    <div class="page-no">
-    Page {{pageNo}} -->
-    <!-- </div> -->
-    <!-- {{/pageNo}} -->
-    {{#hits}}
-
-    <!-- <a href="{{url}}"> -->
-    <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
-      <div class="cover-img">
-        <img src="{{main_img}}" alt="{{name}}" class="hit-img">
-      </div>
-      <p class="name">
-        {{#_snippetResult}}
-        {{{_snippetResult.name.value}}}
-        {{/_snippetResult}}
-        {{^_snippetResult}}
-        {{name}}
-        {{/_snippetResult}}
-      </p>
+    <div class="hits">
+      <!-- {{#pageNo}}
+      <div class="page-no">
+      Page {{pageNo}} -->
       <!-- </div> -->
-    </a>
-    <!-- Modal -->
-    <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav modal-place">
+      <!-- {{/pageNo}} -->
+      {{#hits}}
+
+      <!-- <a href="{{url}}"> -->
+      <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
+        <div class="cover-img">
+          <img src="{{main_img}}" alt="{{name}}" class="hit-img">
+        </div>
+        <p class="name">
+          {{#_snippetResult}}
+          {{{_snippetResult.name.value}}}
+          {{/_snippetResult}}
+          {{^_snippetResult}}
+          {{name}}
+          {{/_snippetResult}}
+        </p>
+        <!-- </div> -->
+      </a>
+      <!-- Modal -->
+      <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <nav class="navbar navbar-default navbar-fixed-top">
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav modal-place">
                   <ul class="nav nav-tabs modal-place tab-modal">
                     <li class="active"><a data-toggle="tab" href="#bio">bio</a></li>
                     <li><a data-toggle="tab" href="#photos">Photos</a></li>
@@ -58,13 +58,13 @@
                     <li><a data-toggle="tab" href="#flights">Flights</a></li>
                   </ul>
                   <div class="modal-body">
-                  <div class="tab-content">
-                    <div id="bio" class="tab-pane fade in active">
+                    <div class="tab-content">
+                      <div id="bio" class="tab-pane fade in active">
 
-                      <h1>{{name}}</h1>
-                      <p> {{description}} </p>
-                    </div>
-                    <div id="photos" class="tab-pane fade">
+                        <h1>{{name}}</h1>
+                        <p> {{description}} </p>
+                      </div>
+                      <div id="photos" class="tab-pane fade">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
                           <ol class="carousel-indicators">
@@ -119,32 +119,58 @@
                             <span class="sr-only">Next</span>
                           </a>
                         </div>
-                    </div>
-                    <div id="videos" class="tab-pane fade">
-                      <h1>view videos</h1>
-                    </div>
-                    <div id="flights" class="tab-pane fade">
-                      <h1>Check flights</h1>
+                      </div>
+                      <div id="videos" class="tab-pane fade">
+                        <h1>view videos</h1>
+                      </div>
+                      <div id="flights" class="tab-pane fade">
+                        <h1>Check flights</h1>
+                        <div id="flight-information">
+                          <h1>First Flight</h1>
+                          <ul id='results'>
+                          </ul>
+                          <h1>Return Flight</h1>
+                          <ul id='return'>
+                          </ul>
+                          <ul id='origins'>
+                          </ul>
+                          <ul>
+                            <!-- <h1>{{name}}</h1> -->
+                            <% @places.each do |place| %>
+                            <li class="flight-checker">
+                              <%= place.name %> | <span class="airport"><%= place.airport %></span> | <%= link_to "Select Destination", remote:true%>
+                            </li>
+                            <% end %>
+                          </ul>
+                          <%= label_tag :origin %>
+                          <%= text_field_tag :origin, nil, id:"origin" %>
+                          <%= label_tag :leaveDate %>
+                          <%= text_field_tag :leaveDate, nil, id:"leave-date", placeholder: 'yyyy-mm-dd' %>
+                          <%= label_tag :returnDate %>
+                          <%= text_field_tag :returnDate, nil, id:"return-date", placeholder: 'yyyy-mm-dd' %>
+                          <button type="button" id="b">Button</button>
+                        </div>
+
+                      </div>
                     </div>
                   </div>
-                </div>
-              </ul>
-            </div>
-          </nav>
+                </ul>
+              </div>
+            </nav>
           </div>
         </div>
       </div>
-    <!--end modal-->
+      <!--end modal-->
 
-    {{/hits}}
+      {{/hits}}
+    </div>
+  </script>
+  <script type="text/html" id="no-results-template">
+    <div id="no-results-message">
+      <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
+      <a href="#" class="clear-all">Clear all</a>
+    </div>
   </div>
-</script>
-<script type="text/html" id="no-results-template">
-  <div id="no-results-message">
-    <p>We didn&rsquo;t find any results for the search <em>&ldquo;{{query}}&rdquo;</em></p>
-    <a href="#" class="clear-all">Clear all</a>
-  </div>
-</div>
 
 </script>
 
@@ -162,20 +188,35 @@
 
       <div class="tab-content">
         <div id="login" class="tab-pane fade in active">
+          <%= form_tag root_path do %>
           <h1>Login to Your Account</h1><br>
           <form>
-            <input type="text" name="user" placeholder="Username">
-            <input type="password" name="pass" placeholder="Password">
-            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            <!-- <input type="text" name="user" placeholder="Username"> -->
+            <%= text_field_tag :email, nil, placeholder:"User Email" %>
+            <!-- <input type="password" name="pass" placeholder="Password"> -->
+            <%= password_field_tag :password, nil, placeholder:"Password" %>
+            <!-- <input type="submit" name="login" class="login loginmodal-submit" value="Login"> -->
+            <%= submit_tag "Log In", class:"loginmodal-submit"%>
+            <% end %>
           </form>
           <a href="#">Forgot Password</a>
         </div>
         <div id="signup" class="tab-pane fade">
-          <h1>sign up</h1><br>
+          <%= form_for @user, url: root_path do |f| %>
+          <h1>Sign up</h1><br>
           <form>
-            <input type="text" name="user" placeholder="Username">
-            <input type="password" name="pass" placeholder="Password">
-            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            <!-- <input type="text" name="user" placeholder="Username"> -->
+            <%= f.text_field :name, placeholder:"Username" %>
+            <!-- <input type="password" name="pass" placeholder="Email Adress"> -->
+            <%= f.text_field :email, placeholder:"Email Address", id: "eml" %>
+            <!-- <input type="password" name="pass" placeholder="Password"> -->
+            <%= f.password_field :password, placeholder:"Password", id: "pass" %>
+            <!-- <input type="password" name="pass" placeholder="Confirm Password"> -->
+            <%= f.password_field :password_confirmation, placeholder:"Confirm Password" %>
+            <!-- <input type="submit" name="login" class="login loginmodal-submit" value="Sign Up"> -->
+            <%= f.submit "Register Now", class:"loginmodal-submit" %>
+            <% end %>
+
           </form>
           <a href="#">Forgot Password</a>
         </div>

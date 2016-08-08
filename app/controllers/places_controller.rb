@@ -1,14 +1,8 @@
 require 'httparty'
 class PlacesController < ApplicationController
   def index
+    @user = User.new
     @places = Place.all
-
-    # @parsed = @response.parsed_response
-    # @description = @response.parsed_response["weather"][0]["description"]
-    # @temp = @parsed["main"]["temp"]
-    # @fahrenheit = @temp * 1.8
-    # @degrees = (@fahrenheit - 459.67).round
-
 
     #clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
   end
@@ -46,6 +40,7 @@ class PlacesController < ApplicationController
 
   def create
     # @place = Place.new(place_params)
+
     # if @place.save
     #   session[:place_id] = @place.id
     #   redirect_to '/'
