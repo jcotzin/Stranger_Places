@@ -7,11 +7,12 @@
       </div>
       <a href="#!" class="brand-logo center">Strangerplaces</a>
       <ul class="right">
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=96&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=1463928533633255" width="96" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-        <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
-      </ul>
-    </div>
-  </nav>
+      <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
+    </ul>
+  </div>
+</nav>
 </div>
 <!-- STARTmain page-->
 <div class="container-full"><%= video_tag "TravelLoop02.mp4", autoplay:true, height: "100%", width: "100%", loop: true%>
@@ -125,6 +126,7 @@
                       </div>
                       <div id="flights" class="tab-pane fade">
                         <h1>Check flights</h1>
+
                         <div id="flight-information">
                           <h1>First Flight</h1>
                           <ul id='results'>
@@ -200,6 +202,7 @@
             <% end %>
           </form>
           <a href="#">Forgot Password</a>
+            <div class="fb-login-button" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
         </div>
         <div id="signup" class="tab-pane fade">
           <%= form_for @user, url: root_path do |f| %>
@@ -220,7 +223,6 @@
           </form>
           <a href="#">Forgot Password</a>
         </div>
-      </div>
     </div>
   </div>
 </div>
