@@ -303,8 +303,38 @@ img{
           font-feature-settings: 'liga';
 }
 
-
-
+/******************STYLING FOR Home Page*******************/
+#center, #center-above, #center-below {
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    }
+    h1, #focus, #greeting h2, #introduction, #login {
+    text-align: center;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 5px;
+    font-size: 1125%;
+    font-weight: 400;
+    height: 76px;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 245px;
+/* left: 330px; */
+    font-weight: 600;
+    font-size: 75px;
+    color: white;
+    margin-bottom: -81px;
+    text-align: center;
+    }
+  video{
+    opacity:0.7;
+  }
 /******************STYLING FOR PLACES MODAL*******************/
 .modal-place{
   width: 100%;

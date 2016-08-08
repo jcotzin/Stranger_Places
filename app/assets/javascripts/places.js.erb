@@ -13,8 +13,14 @@ $(document).on("turbolinks:load", function() {
    success: function(data) {
      console.log(data);
      $.each($('.hit'), function(i,v) {
-       $(v).find('.name').append(data[i].description);
-       $(v).find('.name').append(data[i].degrees);
+       var desc = data[i].description;
+       if (desc == "clear sky") {
+        //  $(v).find('.weather').append('<img src="">');
+        $(v).find('.sunny')
+
+       }
+       $(v).find('.weather').append(data[i].description);
+       $(v).find('.weather').append(data[i].degrees);
      });
    }
   //  data:
