@@ -625,21 +625,22 @@ body{
 .multi-item-carousel .carouse-control.right {
   background-image: none;
 }
+
 h3 {
   text-align: center;
 }
 
 .thumbnail {
-    display: block;
-    padding: 4px;
-    margin-bottom: 20px;
-    line-height: 1.42857143;
-    background-color: #000;
-    border: 1px solid #2b2b2b;
-    border-radius: 4px;
-    -webkit-transition: border .2s ease-in-out;
-    -o-transition: border .2s ease-in-out;
-    transition: border .2s ease-in-out;
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #000;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
 }
 a {
     color: #ffffff;
@@ -653,5 +654,18 @@ a {
     margin: 0px 0px 0px 0px;
     padding-bottom: 10px;
     padding-top: 15px;
+  }
+  a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover{
+  border-color: #000000;
+
+  }
+  a.thumbnail:hover {
+    border-color: #000000;
+  }
+  input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 100px;
   }
 /****************** END STYLING FOR LOGIN & SIGNUP MODALS*******************/
