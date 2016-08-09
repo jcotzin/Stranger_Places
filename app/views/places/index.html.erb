@@ -36,19 +36,21 @@
     <div class="hits">
       {{#hits}}
       <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
-        <div class="cover-img-bg" style=" background-image: url ('http://i.imgur.com/ky8LT0D.png')">
-        <div class="cover-img" style="background-image: url('{{main_img}}')">
-          <p class="name">
-            {{#_snippetResult}}
-            {{{_snippetResult.name.value}}}
-            {{/_snippetResult}}
-            {{^_snippetResult}}
-            {{name}}
-            {{/_snippetResult}}
-          </p>
-          <div class="weather"></div>
+        <div class="cover-img-bg">
+          <div class="cover-img" style="background-image: url('{{main_img}}')">
+          </div>
+          <div class="cover-img-details">
+            <p class="name">
+              {{#_snippetResult}}
+              {{{_snippetResult.name.value}}}
+              {{/_snippetResult}}
+              {{^_snippetResult}}
+              {{name}}
+              {{/_snippetResult}}
+            </p>
+            <div class="weather"></div>
+          </div>
         </div>
-      </div>
       </a>
       <!-- Modal -->
       <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">

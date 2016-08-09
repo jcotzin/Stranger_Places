@@ -157,6 +157,7 @@ p.navbar-logo-main {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  opacity: 0.5;
 }
 
 #hit:after {
@@ -467,9 +468,19 @@ footer a:hover {
     background-size: 100% 100%;
     opacity: 0;
   }
+
 .cover-img-bg{
-  background-image: url(/assets/main-overlay-2.png);
+  /*background-image: url(/assets/main-overlay-2.png);*/
+  position: relative;
+  background-color: black;
 }
+
+.cover-img-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
   width:100%;
 }
