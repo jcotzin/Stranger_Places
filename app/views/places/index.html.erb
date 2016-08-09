@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav modal-place">
                 <ul class="nav nav-tabs modal-place tab-modal">
-                  <li class="active"><a data-toggle="tab" href="#{{objectID}}-bio">bio</a></li>
+                  <li class="active"><a data-toggle="tab" href="#{{objectID}}-bio">Bio</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-photos">Photos</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-videos">Videos</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-flights">Flights</a></li>
@@ -140,8 +140,8 @@
                         <!-- <h1>{{name}}</h1> -->
                         <%= label_tag :airport, "Airport Destination"%>
                         <input type="text" name="airport" class='airport' value={{airport}}>
-                        <%= label_tag :origin, "Airport Origin", placeholder:"MIA"%>
-                        <%= text_field_tag :origin, nil, class:"origin" %>
+                        <%= label_tag :origin, "Airport Origin"%>
+                        <%= text_field_tag :origin, nil, class:"origin", placeholder:"MIA" %>
                         <%= label_tag :leaveDate, "Leave Date"%>
                         <%= text_field_tag :leaveDate, nil, class:"leave-date", placeholder: 'yyyy-mm-dd' %>
                         <%= label_tag :returnDate, "Return Date" %>
@@ -221,7 +221,6 @@
 </div>
 </div>
 <!-- users favorite places go here modal -->
-
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
 <div class="bottom" role="document">
