@@ -61,7 +61,7 @@
               <ul class="nav navbar-nav modal-place">
                 <ul class="nav nav-tabs modal-place tab-modal">
                   <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
-                  <li class="active"><a data-toggle="tab" href="#{{objectID}}-bio">bio</a></li>
+                  <li class="active"><a data-toggle="tab" href="#{{objectID}}-bio">Bio</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-photos">Photos</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-videos">Videos</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-flights">Flights</a></li>
@@ -124,13 +124,14 @@
                       </div>
                     </div>
                     <div id="{{objectID}}-videos" class="tab-pane fade videos" style="background-color: black">
-                      <h1>view videos</h1>
+                      <!-- <h1>view videos</h1> -->
                       <iframe src="https://player.vimeo.com/video/26135773" width="100%" height="100%" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                       <div class="video">
                     </div>
                   </div>
                     <div id="{{objectID}}-flights" class="tab-pane fade flights">
                       <div id="{{objectID}}-flight-information">
+                        <br><h3>Find Flights to {{name}}</h3>
                         <ul id='{{objectID}}-results'>
                         </ul>
                         <ul id='{{objectID}}-return'>
@@ -138,15 +139,15 @@
                         <ul id='{{objectID}}-origins'>
                         </ul>
                         <!-- <h1>{{name}}</h1> -->
-                        <%= label_tag :airport %>
+                        <%= label_tag :airport, "Airport Destination"%>
                         <input type="text" name="airport" class='airport' value={{airport}}>
-                        <%= label_tag :origin %>
-                        <%= text_field_tag :origin, nil, class:"origin" %>
-                        <%= label_tag :leaveDate %>
+                        <%= label_tag :origin, "Airport Origin"%>
+                        <%= text_field_tag :origin, nil, class:"origin", placeholder:"MIA" %>
+                        <%= label_tag :leaveDate, "Leave Date"%>
                         <%= text_field_tag :leaveDate, nil, class:"leave-date", placeholder: 'yyyy-mm-dd' %>
-                        <%= label_tag :returnDate %>
+                        <%= label_tag :returnDate, "Return Date" %>
                         <%= text_field_tag :returnDate, nil, class:"return-date", placeholder: 'yyyy-mm-dd' %>
-                        <button type="button" class="b" data-objectid="{{objectID}}">Button</button>
+                        <button type="button" class="b" data-objectid="{{objectID}}">&emsp;Go!&emsp;</button>
                       </div>
                     </div>
                   </div>
@@ -175,24 +176,24 @@
 
   <div class="loginmodal-container">
     <ul class="nav nav-tabs">
-      <li><a data-toggle="tab" href="#login">login</a></li>
+      <li><a data-toggle="tab" href="#login">Login</a></li>
       <li><a data-toggle="tab" href="#signup">Sign up</a></li>
     </ul>
 
     <div class="tab-content">
       <div id="login" class="tab-pane login-tab fade in active">
 
-        <%= form_tag @user, url: login_path do %>
+        <%= form_for @user, url: login_path do |f| %>
         <h1>Login to Your Account</h1><br>
         <form>
           <!-- <input type="text" name="user" placeholder="Username"> -->
           <!-- <%= text_field_tag :name, nil, placeholder:"Username" %> -->
           <!-- <input type="text" name="user" placeholder="Username"> -->
-          <%= text_field_tag :email, nil, placeholder:"User Email" %>
+          <%= f.text_field :email, placeholder:"User Email" %>
           <!-- <input type="password" name="pass" placeholder="Password"> -->
-          <%= password_field_tag :password, nil, placeholder:"Password" %>
+          <%= f.password_field :password, placeholder:"Password" %>
           <!-- <input type="submit" name="login" class="login loginmodal-submit" value="Login"> -->
-          <%= submit_tag "Log In", class:"loginmodal-submit"%>
+          <%= f.submit "Log In", class:"loginmodal-submit"%>
           <% end %>
         </form>
         <a href="#">Forgot Password</a>
@@ -221,7 +222,6 @@
 </div>
 </div>
 <!-- users favorite places go here modal -->
-
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
 <div class="bottom" role="document">
