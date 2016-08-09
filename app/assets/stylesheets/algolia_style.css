@@ -197,7 +197,7 @@ vertical-align: middle;*/
   font-size: 4em;
   color: white;
   /* margin-bottom: -81px; */
-  text-align: left;
+  text-align: center;
   padding-top: 70px;
   }
 .hit .weather {
@@ -475,8 +475,10 @@ footer a:hover {
 
 .cover-img-details {
   position: absolute;
-  top: 0;
-  left: 30%;
+      top: 0;
+      left: 0%;
+      text-align: center;
+      width: 100%;
 }
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
