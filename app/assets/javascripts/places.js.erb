@@ -85,12 +85,12 @@ $(document).on("turbolinks:load", function() {
           var arrivalTime = segment.leg[0].arrivalTime;
           arrivalTime = arrivalTime + " Time Zone";
           var carriers = trips[i].slice[0].segment[0].flight.carrier;
-          $('#' + placeId + '-results').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+          $('#' + placeId + '-results').append("<li class='col-md-3'>Price: " + "Outbound: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
           $('#' + placeId + '-results').append(`<a href="https://www.kayak.com/flights/${arrivalCode}-${origin_code}/${leaveDate}">${origin_code}</a>`);
         }
         $.ajax({
           method: "POST",
-          url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCSI8n4_Jm5nvokRoscrR1LZaCdxnxWjw8",
+          url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCfD_PvdopfHUyWz4fX4Pc8FYFMDq8v2oU",
           contentType: 'application/json',
           dataType: 'json',
           data: JSON.stringify(flightRequest(destination, origin, returnDate)),
@@ -108,7 +108,7 @@ $(document).on("turbolinks:load", function() {
               var arrivalTime = segment.leg[0].arrivalTime;
               arrivalTime = arrivalTime + " Time Zone";
               var carriers = trips[i].slice[0].segment[0].flight.carrier;
-              $('#' + placeId + '-return').append("<li>Price: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
+              $('#' + placeId + '-return').append("<li>Price: " + "Inbound: " + price + " " + origin_code + " Departs: " + departureTime + " " + arrivalCode + " " + arrivalTime + " Airline: " + carriers  + "</li>");
               $('#' + placeId + '-return').append(`<a href="https://www.kayak.com/flights/${origin_code}-${arrivalCode}/${leaveDate}">${origin_code}</a>`);
             }
           },

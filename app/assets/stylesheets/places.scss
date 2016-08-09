@@ -463,8 +463,13 @@ border-radius:0px;
   padding: 5px 130px;
 }
 .bio h1 {
-  color:black;
+  color: black;
   text-align: center;
+  margin: 10px;
+  height: 80px;
+  font-size: 50px;
+  top: 0;
+  border-bottom: solid 1px #c5c5c5;
 }
 .bio p {
   color:black;
