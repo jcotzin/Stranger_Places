@@ -394,11 +394,12 @@ padding-top: 50px;
   margin-right: 0px;
 }
 .bottom{
-  height:50px;
+  height:100px;
   border-radius: 0px;
   bottom: 0px;
   position: absolute;
   width: 100%;
+  background-color: white;
 }
 .modal-open .modal {
     overflow-x: hidden;
@@ -564,9 +565,19 @@ border-radius:0px;
   font-size: 12px;
 }
 .login-tab{
-
+}
 .fav{
   height:500px;
 }
+body{
+  line-height: 0px;
+}
+.container-full:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 /****************** END STYLING FOR LOGIN & SIGNUP MODALS*******************/

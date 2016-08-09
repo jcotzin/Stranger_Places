@@ -170,7 +170,7 @@ vertical-align: middle;*/
 }
 
 .hit p.name {
-  height: 76px;
+  height: 176px;
   overflow: hidden;
   color: rgb(0, 0, 0);
   /*position: relative;*/
@@ -181,6 +181,7 @@ vertical-align: middle;*/
   color: white;
   /*margin-bottom: -81px;*/
   text-align: center;
+  padding-top: 70px;
 }
 .hit .weather {
   /*height: 100px;*/

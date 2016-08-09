@@ -12,6 +12,20 @@ Place.create!([
 User.create!([
   {name: "Jessica", email: "jcotzin@gmail.com", password_digest: "$2a$10$LZ.Xc4TOBHkjx7z6trZdYOUPMsG6Ddxhr54337irFHZexPbiNQ6JG"}
 ])
+Tag.create!([
+  {name:"Adventure"},
+  {name:"Beaches"},
+  {name:"Budget"},
+  {name:"Family"},
+  {name:"Honeymoon"},
+  {name:"Romance"},
+  {name:"Tropical"},
+  {name:"Luxury"},
+  {name:"Wildlife"},
+  {name:"Outdoor"},
+  {name:"Nature"},
+  {name:"Historic"},
+  ])
 # places.each do |place|
 #   Place.create!(place)
 # end

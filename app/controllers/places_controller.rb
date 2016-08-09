@@ -4,9 +4,6 @@ class PlacesController < ApplicationController
     @user = User.new
     @places = Place.all
     @favorites = current_user.places if current_user
-
-
-    #clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
   end
 
   def city

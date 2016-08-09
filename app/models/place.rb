@@ -6,8 +6,6 @@ include AlgoliaSearch
   has_many :videos
 
   has_and_belongs_to_many :users
-  include AlgoliaSearch
-
 
   #not sure where this goes to index our model
   # Place.algolia_reindex
@@ -20,9 +18,9 @@ include AlgoliaSearch
     attributesToIndex ['name', 'city', 'state_province', 'country', 'country', 'airport', 'main_img' 'unordered(description)']
 
     # tags used for filtering
-    # tags do
-    #   [item_type, "author_#{author}", "story_#{story_id}"]
-    # end
+    tags do
+      [item_type, "author_#{author}", "story_#{story_id}"]
+    end
 
     # the `customRanking` setting defines the ranking criteria use to compare two matching records in case their text-relevance is equal. It should reflect your record popularity.
     customRanking ['desc(likes_count)']
