@@ -32,24 +32,26 @@
 <!-- START results page -->
 <div id="hits"></div>
 <script type="text/html" id="hits-template">
-<form>
-  <div class="hits">
-    {{#hits}}
-    <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
-      <div class="cover-img-bg" style=" background-image: url ('http://i.imgur.com/ky8LT0D.png')">
-      <div class="cover-img" style="background-image: url('{{main_img}}')">
-        <p class="name">
-          {{#_snippetResult}}
-          {{{_snippetResult.name.value}}}
-          {{/_snippetResult}}
-          {{^_snippetResult}}
-          {{name}}
-          {{/_snippetResult}}
-        </p>
-        <div class="weather"></div>
-      </div>
-    </div>
-    </a>
+  <form>
+    <div class="hits">
+      {{#hits}}
+      <a href="#" class="hit" data-toggle="modal" data-id="{{objectID}}" data-target="#{{objectID}}" >
+        <div class="cover-img-bg">
+          <div class="cover-img" style="background-image: url('{{main_img}}')">
+          </div>
+          <div class="cover-img-details">
+            <p class="name">
+              {{#_snippetResult}}
+              {{{_snippetResult.name.value}}}
+              {{/_snippetResult}}
+              {{^_snippetResult}}
+              {{name}}
+              {{/_snippetResult}}
+            </p>
+            <div class="weather"></div>
+          </div>
+        </div>
+      </a>
     <!-- Modal -->
     <div class="modal fade" id="{{objectID}}" tabindex="-1" role="dialog" aria-labelledby="popup">
       <div class="modal-dialog modal-lg" role="document">
@@ -85,6 +87,7 @@
                             <div class="carousel-caption">
                               <h3>Chania</h3>
                               <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+>>>>>>> 1d171fe52475cd050f6b956deaafec47901fb76d
                             </div>
                           </div>
                           <div class="item">
