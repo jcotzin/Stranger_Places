@@ -60,6 +60,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav modal-place">
                 <ul class="nav nav-tabs modal-place tab-modal">
+                  <li><label for="heart"><i class="material-icons" data-toggle="modal" data-target="#heart">favorite</i></label></li>
                   <li class="active"><a data-toggle="tab" href="#{{objectID}}-bio">bio</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-photos">Photos</a></li>
                   <li><a data-toggle="tab" href="#{{objectID}}-videos">Videos</a></li>
@@ -225,7 +226,6 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="heart" aria-labelledby="heart">
 <div class="bottom" role="document">
   <div class="fav">
-    <p>users favorits places</p>
     <% if current_user%>
     <p><%=current_user.name%>'s profile page</p>
     <% if @favorites %>
@@ -234,6 +234,45 @@
     <% end %>
     <% end %>
     <% end %>
-  </div>
-</div>
-</div>
+    <p><label for="heart"><i class="material-icons">favorite</i></label>Your favorite places</p>
+    <div class="row">
+     <div class="col-md-2">
+       <a href="pulpitrock.jpg" class="thumbnail">
+         <p>Ahiumanu</p>
+         <!-- <img src="ahiumanu_hawaii.jpg" alt="Pulpit Rock" style="width:150px;height:150px"> -->
+         <%=image_tag ("ahiumanu_hawaii.jpg") %>
+       </a>
+     </div>
+     <div class="col-md-2">
+       <a href="moustiers-sainte-marie.jpg" class="thumbnail">
+         <p>Ahiumanu</p>
+         <%=image_tag ("ahiumanu_hawaii.jpg") %>
+       </a>
+     </div>
+     <div class="col-md-2">
+       <a href="cinqueterre.jpg" class="thumbnail">
+         <p>Ahiumanu</p>
+         <%=image_tag ("ahiumanu_hawaii.jpg") %>
+       </a>
+     </div>
+       <div class="col-md-2">
+         <a href="pulpitrock.jpg" class="thumbnail">
+           <p>Ahiumanu</p>
+           <!-- <img src="ahiumanu_hawaii.jpg" alt="Pulpit Rock" style="width:150px;height:150px"> -->
+           <%=image_tag ("ahiumanu_hawaii.jpg") %>
+         </a>
+       </div>
+       <div class="col-md-2">
+         <a href="moustiers-sainte-marie.jpg" class="thumbnail">
+           <p>Ahiumanu</p>
+           <%=image_tag ("ahiumanu_hawaii.jpg") %>
+         </a>
+       </div>
+       <div class="col-md-2">
+         <a href="cinqueterre.jpg" class="thumbnail">
+           <p>Ahiumanu</p>
+           <%=image_tag ("ahiumanu_hawaii.jpg") %>
+         </a>
+     </div>
+   </div>
+ </div>

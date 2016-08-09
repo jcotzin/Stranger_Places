@@ -26,8 +26,8 @@ nav [class^="mdi-"], nav [class*="mdi-"],
 nav i.material-icons {
   display: block;
   font-size: 2rem;
-  height: 56px;
-  line-height: 56px;
+  height: 45px;
+  line-height: 45px;
 }
 
 nav .nav-wrapper {
@@ -314,7 +314,7 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
     overflow: hidden;
     color: rgb(0, 0, 0);
     position: relative;
-    top: 245px;
+    top: 345px;
 /* left: 330px; */
     font-weight: 600;
     font-size: 75px;
@@ -340,6 +340,13 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
   border-bottom: 0px;
   text-align: center;
   padding-bottom: 10px;
+}
+.modal-place .nav-tabs{
+      border-bottom: 0px;
+      text-align: center;
+      padding-bottom: 0px;
+      height: 45px;
+      vertical-align: middle;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
@@ -395,12 +402,14 @@ padding-top: 50px;
   margin-right: 0px;
 }
 .bottom{
-  height:100px;
+  height:250px;
   border-radius: 0px;
   bottom: 0px;
   position: absolute;
   width: 100%;
-  background-color: white;
+  background-color: black;
+  text-align: center;
+  color: white;
 }
 .modal-open .modal {
     overflow-x: hidden;
@@ -427,7 +436,8 @@ padding-top: 50px;
 .nav-tabs.modal-place.tab-modal li {
     float: left;
     margin-bottom: -1px;
-    width: 25%;
+    width: 20%;
+    padding-bottom: 0px;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
 
@@ -467,7 +477,7 @@ border-radius:0px;
   color: black;
   text-align: center;
   margin: 10px;
-  height: 80px;
+  height: 120px;
   font-size: 50px;
   top: 0;
   border-bottom: solid 1px #c5c5c5;
@@ -589,5 +599,56 @@ body{
 .modal {
    overflow-y: auto;
 }
+.multi-item-carousel .carousel-inner > .item {
+  transition: 500ms ease-in-out left;
+}
+.multi-item-carousel .carousel-inner .active.left {
+  left: -33%;
+}
+.multi-item-carousel .carousel-inner .active.right {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .next {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .prev {
+  left: -33%;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .multi-item-carousel .carousel-inner > .item {
+    transition: 500ms ease-in-out all;
+    backface-visibility: visible;
+    transform: none!important;
+  }
+}
+.multi-item-carousel .carouse-control.left,
+.multi-item-carousel .carouse-control.right {
+  background-image: none;
+}
 
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #000;
+    border: 1px solid #2b2b2b;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .col-md-2{
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .bottom p{
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+  }
 /****************** END STYLING FOR LOGIN & SIGNUP MODALS*******************/
