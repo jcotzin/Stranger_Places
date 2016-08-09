@@ -190,27 +190,25 @@ vertical-align: middle;*/
   height: 176px;
   overflow: hidden;
   color: rgb(0, 0, 0);
-  /*position: relative;*/
-  /*bottom: 245px;*/
+  /* position: relative; */
+  /* bottom: 245px; */
   /* left: 330px; */
   font-weight: 300;
   font-size: 4em;
   color: white;
-  /*margin-bottom: -81px;*/
+  /* margin-bottom: -81px; */
   text-align: center;
   padding-top: 70px;
-}
+  }
 .hit .weather {
-  /*height: 100px;*/
+  /* height: 100px; */
   overflow: hidden;
   color: rgb(0, 0, 0);
-  /*position: relative;
-  bottom: 355px;*/
   /* left: 330px; */
   font-weight: 300;
   font-size: 4em;
   color: white;
-  /*margin-bottom: -81px;*/
+  /* margin-bottom: -81px; */
   text-align: center;
 }
 .hit .sunny{
@@ -477,8 +475,10 @@ footer a:hover {
 
 .cover-img-details {
   position: absolute;
-  top: 0;
-  left: 0;
+      top: 0;
+      left: 0%;
+      text-align: center;
+      width: 100%;
 }
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
