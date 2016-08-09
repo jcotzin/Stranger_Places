@@ -227,21 +227,20 @@
 <div class="bottom" role="document">
   <div class="fav">
     <% if current_user%>
-    <p><%=current_user.name%>'s profile page</p>
-    <% if @favorites %>
-    <% @favorites.each do |f| %>
-    <%= image_tag f.main_img, :width => "50%" %>
-    <% end %>
-    <% end %>
-    <% end %>
-    <p><label for="heart"><i class="material-icons">favorite</i></label>Your favorite places</p>
+    <p><label for="heart"><i class="material-icons">favorite</i></label><%=current_user.name%>'s favorite places</p>
     <div class="row">
      <div class="col-md-2">
-       <a href="pulpitrock.jpg" class="thumbnail">
-         <p>Ahiumanu</p>
+       <% if @favorites %>
+       <% @favorites.each do |f| %>
+       <%= image_tag f.main_img, :width => "50%" %>
+       <% end %>
+       <% end %>
+       <% end %>
+       <!-- <a href="pulpitrock.jpg" class="thumbnail">
+         <p>Ahiumanu</p> -->
          <!-- <img src="ahiumanu_hawaii.jpg" alt="Pulpit Rock" style="width:150px;height:150px"> -->
-         <%=image_tag ("ahiumanu_hawaii.jpg") %>
-       </a>
+         <%#=image_tag ("ahiumanu_hawaii.jpg") %>
+       <!-- </a> -->
      </div>
      <div class="col-md-2">
        <a href="moustiers-sainte-marie.jpg" class="thumbnail">
