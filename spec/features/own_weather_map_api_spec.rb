@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe OpenWeatherMapApi, type: :model do
+RSpec.describe OpenWeatherMapApi, type: :feature do
   subject { described_class }
 
   it "converts 0K into -459.67F (rounded to -460F)" do
@@ -25,3 +25,4 @@ RSpec.describe OpenWeatherMapApi, type: :model do
     expect(coords['lon']).to eq(-80.19)
     expect(coords['lat']).to eq(25.77)
   end
+end

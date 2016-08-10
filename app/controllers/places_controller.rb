@@ -1,4 +1,3 @@
-require 'httparty'
 class PlacesController < ApplicationController
   def index
     @user = User.new
